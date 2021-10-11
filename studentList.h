@@ -11,7 +11,7 @@
 
 #include "myDate.h"
 #include <iomanip>
-#include <string.h>
+#include <cstring>
 
 struct Student {
     char* name;
