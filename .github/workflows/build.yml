@@ -1,0 +1,21 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+      - name: Build project
+        uses: nicledomaS/cmake_build_action@v1.4
+        with:
+          config: ${{ matrix.configs }}
+      - uses: actions/upload-artifact@v2
+        with:
+          path: build/prog3*
+          name: build_${{ matrix.os }}.zip
